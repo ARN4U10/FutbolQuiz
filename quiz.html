@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Fútbol</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz de Fútbol</h1>
+    <div id="question-container">
+      <p id="question">Pregunta aquí</p>
+      <div id="answers"></div>
+    </div>
+    <button id="next-btn">Siguiente</button>
+    <div id="score-container" class="hide">
+      <h2>Tu puntuación: <span id="score">0</span>/10</h2>
+      <button onclick="location.reload()">Reintentar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
