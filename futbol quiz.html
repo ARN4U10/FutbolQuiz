@@ -1,56 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz de Fútbol</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Fútbol</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+  <div class="quiz-container">
     <h1>Quiz de Fútbol</h1>
-    <div class="quiz-container">
-        <div class="question">
-            <h2>¿Quién ganó la Copa del Mundo de 2010?</h2>
-            <ul class="options">
-                <li><input type="radio" name="q1" value="A"> A) España</li>
-                <li><input type="radio" name="q1" value="B"> B) Alemania</li>
-                <li><input type="radio" name="q1" value="C"> C) Brasil</li>
-                <li><input type="radio" name="q1" value="D"> D) Argentina</li>
-            </ul>
-        </div>
-        <div class="question">
-            <h2>¿Cuál es el club más exitoso en la UEFA Champions League?</h2>
-            <ul class="options">
-                <li><input type="radio" name="q2" value="A"> A) Real Madrid</li>
-                <li><input type="radio" name="q2" value="B"> B) AC Milan</li>
-                <li><input type="radio" name="q2" value="C"> C) Liverpool</li>
-                <li><input type="radio" name="q2" value="D"> D) Barcelona</li>
-            </ul>
-        </div>
-        <button onclick="checkAnswers()">Enviar Respuestas</button>
+    <div id="question-container">
+      <p id="question">Pregunta aquí</p>
+      <div id="answers"></div>
     </div>
+    <button id="next-btn">Siguiente</button>
+    <div id="score-container" class="hide">
+      <h2>Tu puntuación: <span id="score">0</span>/10</h2>
+      <button onclick="location.reload()">Reintentar</button>
+    </div>
+  </div>
 
-    <script>
-        function checkAnswers() {
-            const answers = {
-                q1: 'A',
-                q2: 'A'
-            };
-            let score = 0;
-
-            for (let question in answers) {
-                const options = document.getElementsByName(question);
-                for (let option of options) {
-                    if (option.checked && option.value === answers[question]) {
-                        score++;
-                    }
-                }
-            }
-
-            alert(`Tu puntaje es: ${score} de ${Object.keys(answers).length}`);
-        }
-    </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
