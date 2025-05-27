@@ -1,4 +1,4 @@
-const questions = [
+  const questions = [
   {
     question: "¿Qué país ha ganado más Copas del Mundo?",
     answers: ["Alemania", "Italia", "Brasil", "Argentina"],
@@ -29,4 +29,24 @@ const questions = [
     answers: ["Cristiano Ronaldo", "Neymar", "Messi", "Mbappé"],
     correct: 2
   },
+  {
+    question: "¿Cuántos jugadores hay en un equipo de fútbol en el campo?",
+    answers: ["9", "10", "11", "12"],
+    correct: 2
+  },
+  {
+    question: "¿Qué club tiene más Champions League?",
+    answers: ["Barcelona", "Milan", "Real Madrid", "Bayern Múnich"],
+    correct: 2
+  },
+  {
+    question: "¿Qué selección ganó el Mundial 2014?",
+    answers: ["Argentina", "Alemania", "Brasil", "Francia"],
+    correct: 1
+  },
+  {
+    question: "¿Quién fue el máximo goleador del Mundial 2022?",
+    answers: ["Mbappé", "Messi", "Giroud", "Ronaldo"],
+    correct: 0
+  }
 ];
