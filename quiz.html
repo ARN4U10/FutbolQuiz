@@ -7,7 +7,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="quiz-container">
+
+  <div class="welcome-container" id="welcome">
+    <h1>Bienvenido a FutbolQuiz</h1>
+    <p>¿Eres un verdadero fanático del fútbol? ¡Pon a prueba tus conocimientos con nuestro quiz de fútbol!</p>
+    <p>Responde preguntas sobre la historia, jugadores y momentos icónicos del deporte rey.</p>
+    <button onclick="document.getElementById('welcome').style.display='none'; document.getElementById('quiz').style.display='block';">Comenzar Quiz</button>
+  </div>
+
+  <div class="quiz-container" id="quiz" style="display: none;">
     <h1>Quiz de Fútbol</h1>
     <div id="question-container">
       <p id="question">Pregunta aquí</p>
