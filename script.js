@@ -57,35 +57,53 @@ let score = 0;
 const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
 const nextBtn = document.getElementById("next-btn");
+const feedbackEl = document.getElementById("feedback");
 const scoreContainer = document.getElementById("score-container");
 const scoreEl = document.getElementById("score");
+const restartBtn = document.getElementById("restart-btn");
+
+function startQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  scoreContainer.classList.add("hide");
+  document.getElementById("question-container").classList.remove("hide");
+  nextBtn.classList.add("hide");
+  showQuestion();
+}
 
 function showQuestion() {
   const q = questions[currentQuestion];
   questionEl.textContent = q.question;
   answersEl.innerHTML = "";
+  feedbackEl.textContent = "";
   nextBtn.classList.add("hide");
 
   q.answers.forEach((answer, index) => {
     const btn = document.createElement("button");
     btn.textContent = answer;
-    btn.onclick = () => selectAnswer(btn, index);
+    btn.classList.add("answer-btn");
+    btn.addEventListener("click", () => selectAnswer(btn, index));
     answersEl.appendChild(btn);
   });
 }
 
 function selectAnswer(selectedBtn, index) {
-  const isCorrect = index === questions[currentQuestion].correct;
-  const buttons = answersEl.querySelectorAll("button");
+  const correctIndex = questions[currentQuestion].correct;
+  const isCorrect = index === correctIndex;
 
-  buttons.forEach((btn, i) => {
+  Array.from(answersEl.children).forEach((btn, i) => {
     btn.disabled = true;
-    if (i === questions[currentQuestion].correct) {
+    btn.classList.remove("correct", "wrong");
+    if (i === correctIndex) {
       btn.classList.add("correct");
-    } else if (btn === selectedBtn) {
+    } else if (btn === selectedBtn && !isCorrect) {
       btn.classList.add("wrong");
     }
   });
+
+  feedbackEl.textContent = isCorrect
+    ? "✅ ¡Correcto!"
+    : `❌ Incorrecto. La respuesta correcta es: ${questions[currentQuestion].answers[correctIndex]}`;
 
   if (isCorrect) score++;
   nextBtn.classList.remove("hide");
@@ -94,7 +112,7 @@ function selectAnswer(selectedBtn, index) {
 function showScore() {
   document.getElementById("question-container").classList.add("hide");
   scoreContainer.classList.remove("hide");
-  scoreEl.textContent = `${score} / ${questions.length}`;
+  scoreEl.textContent = `Tu puntuación: ${score} / ${questions.length}`;
 }
 
 nextBtn.addEventListener("click", () => {
@@ -106,4 +124,8 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-showQuestion();
+if (restartBtn) {
+  restartBtn.addEventListener("click", startQuiz);
+}
+
+startQuiz();
